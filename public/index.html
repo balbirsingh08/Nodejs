@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Chat App</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="header-left">
+        <h1><i class="fas fa-comments"></i> ChatHub</h1>
+        <div class="user-info" id="user-info" style="display: none;">
+          <span class="user-avatar" id="user-avatar"></span>
+          <span class="username" id="current-username"></span>
+        </div>
+      </div>
+      <div class="online-count">
+        <i class="fas fa-users"></i>
+        <span id="online-count">0</span> online
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="chat-main">
+      <!-- Sidebar with users -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-user-friends"></i> Online Users</h3>
+          <span class="users-count" id="users-count">0</span>
+        </div>
+        <div id="users-list" class="users-list"></div>
+      </div>
+
+      <!-- Chat area -->
+      <div class="chat-area">
+        <div class="chat-welcome" id="chat-welcome">
+          <div class="welcome-content">
+            <i class="fas fa-comments"></i>
+            <h2>Welcome to ChatHub!</h2>
+            <p>Start chatting with people online</p>
+          </div>
+        </div>
+
+        <div id="messages" class="messages"></div>
+
+        <!-- Typing indicator -->
+        <div class="typing-indicator" id="typing-indicator">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span id="typing-text"></span>
+        </div>
+
+        <!-- Message Input -->
+        <div class="message-input">
+          <div class="input-container">
+            <input type="text" id="message-input" placeholder="Type your message..." maxlength="500" disabled />
+            <div class="input-actions">
+              <button class="emoji-btn" id="emoji-btn">
+                <i class="fas fa-smile"></i>
+              </button>
+              <button class="send-btn" id="send-btn" disabled>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2><i class="fas fa-door-open"></i> Join ChatHub</h2>
+        </div>
+        <div class="modal-body">
+          <!-- Avatar selection -->
+          <div class="avatar-selection">
+            <div class="avatar-options">
+              <div class="avatar-option selected" data-avatar="🦄"><span>🦄</span></div>
+              <div class="avatar-option" data-avatar="🐱"><span>🐱</span></div>
+              <div class="avatar-option" data-avatar="🐶"><span>🐶</span></div>
+              <div class="avatar-option" data-avatar="🦁"><span>🦁</span></div>
+              <div class="avatar-option" data-avatar="🐯"><span>🐯</span></div>
+              <div class="avatar-option" data-avatar="🦊"><span>🦊</span></div>
+            </div>
+          </div>
+
+          <!-- Username input -->
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username-input" placeholder="Choose your username" maxlength="20"/>
+          </div>
+          <small class="input-hint">Minimum 3 characters, letters and numbers only</small>
+        </div>
+        <div class="modal-footer">
+          <button class="join-btn" id="join-btn">
+            <i class="fas fa-sign-in-alt"></i> Join Chat
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emoji Picker -->
+    <div class="emoji-picker" id="emoji-picker">
+      <!-- Category 1 -->
+      <div class="emoji-category">
+        <span>😀 Smileys</span>
+        <div class="emoji-grid">
+          <span data-emoji="😀">😀</span>
+          <span data-emoji="😃">😃</span>
+          <span data-emoji="😄">😄</span>
+          <span data-emoji="😁">😁</span>
+          <span data-emoji="😆">😆</span>
+          <span data-emoji="😅">😅</span>
+          <span data-emoji="😂">😂</span>
+          <span data-emoji="🤣">🤣</span>
+          <span data-emoji="😊">😊</span>
+          <span data-emoji="😇">😇</span>
+        </div>
+      </div>
+      <!-- Category 2 -->
+      <div class="emoji-category">
+        <span>🎉 Celebration</span>
+        <div class="emoji-grid">
+          <span data-emoji="🎉">🎉</span>
+          <span data-emoji="🎊">🎊</span>
+          <span data-emoji="🎈">🎈</span>
+          <span data-emoji="🎁">🎁</span>
+          <span data-emoji="🎂">🎂</span>
+          <span data-emoji="🥳">🥳</span>
+          <span data-emoji="✨">✨</span>
+          <span data-emoji="🎇">🎇</span>
+          <span data-emoji="🎆">🎆</span>
+          <span data-emoji="🙌">🙌</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Socket.io -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Your script -->
+  <script src="script.js"></script>
+</body>
+</html>
