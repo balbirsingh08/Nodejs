@@ -197,3 +197,6 @@ Enhance security
 Add tests
 
 Improve documentation
+
+<img width="1276" height="653" alt="image" src="https://github.com/user-attachments/assets/b218143a-919e-4623-b306-c600234fe716" />
+
